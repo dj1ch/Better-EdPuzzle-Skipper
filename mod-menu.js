@@ -71,7 +71,7 @@ javascript:
         if (userInput) {
             var apiUrl = "https://api.ai21.com/studio/v1/j2-ultra/complete";
             var authToken = "Bearer IWO4ideX3gNOcxJVt2zks1vVc3P7tIms";
-            var promptText = "You are GPT-4, an AI by OpenAI. Reply to My Message In Two Sentences Maximum And Simple Words Only. Simple Worlds Only Reply To Message: '" + userInput + "'.";
+            var promptText = "Answer User Message/Question: '" + userInput + "'.";
             var payload = {
                 "prompt": promptText,
                 "numResults": 1,
