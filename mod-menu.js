@@ -313,9 +313,11 @@ javascript: void (function () {
                 }, 500);
                 setTimeout(() => {
                     leftText.style.fontSize = '1';
+                    rightText.style.fontSize = '0px';
                     setTimeout(() => {
                         leftText.textContent = 'EdPuzzle Mod Menu Successfully Injected';
                         leftText.style.fontSize = '';
+                        rightText.style.fontSize = '0px';
                     }, 500);
                 }, 1000);
             }
