@@ -234,11 +234,11 @@ javascript: void (function () {
 
                     /* footer text */
                     var footerText = document.createElement("div");
-                    footerText.textContent = "Made by smorenitez - Discord, TikTok, & GitHub: smorenitez";
+                    footerText.textContent = "Made by smorenitez - TikTok: @smorenitez";
                     footerText.style.position = "absolute";
                     footerText.style.fontFamily = "'Quicksand', sans-serif";
                     footerText.style.bottom = "10px";
-                    footerText.style.left = "50%";
+                    footerText.style.left = "48%";
                     footerText.style.transform = "translateX(-50%)";
                     footerText.style.color = "#888";
                     footerText.style.fontSize = "10px";
