@@ -25,7 +25,8 @@ javascript: void (function () {
         rightText.textContent = '3.0s';
         rightText.style.float = 'right';
         toast.appendChild(rightText);
-        let countdown = 3.0;
+        /* We added a countdown because there are some instances of the UI being too big/small when executed too early */
+        let countdown = 1.5;
         const countdownInterval = setInterval(() => {
             countdown -= 0.1;
             rightText.textContent = countdown.toFixed(1) + 's';
