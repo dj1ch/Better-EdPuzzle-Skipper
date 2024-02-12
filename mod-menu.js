@@ -216,6 +216,7 @@ javascript: void (function () {
                                 }).then(response => {
                                     if (response.ok) {
                                         alert('Feedback submitted successfully!');
+                                        overlay.remove();
                                     } else {
                                     }
                                 }).catch(error => {
@@ -227,7 +228,8 @@ javascript: void (function () {
                         });
                         container.appendChild(submitButton);
                         overlay.appendChild(container);
-                        document.body.appendChild(overlay);                        /* end */
+                        document.body.appendChild(overlay);                      
+                          /* end */
                     });
 
                     skipButton2.addEventListener("click", function () {
