@@ -1,6 +1,7 @@
 javascript:void (function() {
 /* Method 1: Copy the code, Go to Inspect Element, Click Console, Paste the code into there, Press Enter */
 /* Method 2: Highlight all the code, drag it to the bookmarks bar, then click the bookmark on an EdPuzzle */
+/* February 12th, 2024 Update: Added New Buttons and Features */
 var blackContainer = document.createElement("div");
 blackContainer.style.position = "fixed";
 blackContainer.style.top = "50%";
