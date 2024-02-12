@@ -1,4 +1,4 @@
-javascript:
+javascript:void (function() {
 /* Method 1: Copy the code, Go to Inspect Element, Click Console, Paste the code into there, Press Enter */
 /* Method 2: Highlight all the code, drag it to the bookmarks bar, then click the bookmark on an EdPuzzle */
 var blackContainer = document.createElement("div");
@@ -37,7 +37,7 @@ var skipButton = document.createElement("button");
 skipButton.textContent = "Skip Video";
 skipButton.style.position = "absolute";
 skipButton.style.top = "50%";
-skipButton.style.left = "40%";
+skipButton.style.left = "56%";
 skipButton.style.transform = "translate(-50%, -50%)";
 skipButton.style.backgroundColor = "transparent";
 skipButton.style.color = "white";
@@ -57,7 +57,7 @@ var skipButton2 = document.createElement("button");
 skipButton2.textContent = "Chat with AI";
 skipButton2.style.position = "absolute";
 skipButton2.style.top = "50%";
-skipButton2.style.left = "60%";
+skipButton2.style.left = "36%";
 skipButton2.style.transform = "translate(-50%, -50%)";
 skipButton2.style.backgroundColor = "transparent";
 skipButton2.style.color = "white";
@@ -66,10 +66,10 @@ skipButton2.style.padding = "10px";
 skipButton2.style.cursor = "pointer";
 skipButton2.style.borderRadius = "10px";
 var skipButton3 = document.createElement("button");
-skipButton3.textContent = "Submit Feedback";
+skipButton3.textContent = "Contact";
 skipButton3.style.position = "absolute";
 skipButton3.style.top = "68%";
-skipButton3.style.left = "51%";
+skipButton3.style.left = "67%";
 skipButton3.style.transform = "translate(-50%, -50%)";
 skipButton3.style.backgroundColor = "transparent";
 skipButton3.style.color = "white";
@@ -77,6 +77,36 @@ skipButton3.style.border = "2px solid white";
 skipButton3.style.padding = "10px";
 skipButton3.style.cursor = "pointer";
 skipButton3.style.borderRadius = "10px";
+var skipButton4 = document.createElement("button");
+skipButton4.textContent = "Answer All Questions";
+skipButton4.style.position = "absolute";
+skipButton4.style.top = "68%";
+skipButton4.style.left = "42%";
+skipButton4.style.transform = "translate(-50%, -50%)";
+skipButton4.style.backgroundColor = "transparent";
+skipButton4.style.color = "white";
+skipButton4.style.border = "2px solid white";
+skipButton4.style.padding = "10px";
+skipButton4.style.cursor = "pointer";
+skipButton4.style.borderRadius = "10px";
+skipButton4.addEventListener("click", function () {
+    alert("This feature is still in development");
+});
+var skipButton5 = document.createElement("button");
+skipButton5.textContent = "<3";
+skipButton5.style.position = "absolute";
+skipButton5.style.top = "50%";
+skipButton5.style.left = "70%";
+skipButton5.style.transform = "translate(-50%, -50%)";
+skipButton5.style.backgroundColor = "transparent";
+skipButton5.style.color = "white";
+skipButton5.style.border = "2px solid white";
+skipButton5.style.padding = "10px";
+skipButton5.style.cursor = "pointer";
+skipButton5.style.borderRadius = "10px";
+skipButton5.addEventListener("click", function () {
+    alert("Thank you for using our EdPuzzle Mod Menu! Your support is greatly appreciated just by using our code. We appreciate each and every one of our users. Your support will continue to provide updates to this software. Thank you and goodbye! <3");
+});
 skipButton3.addEventListener("click", function () {
     /* start */
     var feedback = prompt("Provide Feedback for our EdPuzzle Mod Menu over here! It will be sent directly to the owner via Discord, and if you want a reply, please include your email or Discord username. Thanks!");
@@ -93,7 +123,6 @@ skipButton3.addEventListener("click", function () {
         xhr.send(payloadJSON);
         alert("Feedback submitted successfully!");
     } else {
-        alert("Feedback was not provided. Submission canceled.");
     }
         /* end */
 });
@@ -163,6 +192,8 @@ skipButton2.addEventListener("click", function () {
 blackContainer.appendChild(skipButton);
 blackContainer.appendChild(skipButton2);
 blackContainer.appendChild(skipButton3);
+blackContainer.appendChild(skipButton4);
+blackContainer.appendChild(skipButton5);
 
 /* footer text */
 var footerText = document.createElement("div");
@@ -176,7 +207,7 @@ footerText.style.fontSize = "10px";
 
 blackContainer.appendChild(footerText);
 var footerText2 = document.createElement("div");
-footerText2.textContent = "February 11th, 2024 verison";
+footerText2.textContent = "February 12th, 2024 verison";
 footerText2.style.position = "absolute";
 footerText2.style.bottom = "8%";
 footerText2.style.left = "48%";
@@ -239,3 +270,4 @@ function animate(timestamp) {
     }
 }
 requestAnimationFrame(animate);
+}());
