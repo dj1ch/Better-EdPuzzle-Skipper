@@ -33,7 +33,7 @@ javascript: void (function () {
         rightText.style.fontFamily = "'Quicksand', sans-serif";
         toast.appendChild(rightText);
         /* We added a countdown because there are some instances of the UI being too big/small when executed too early */
-        let countdown = 1.5;
+        let countdown = 0.5;
         const countdownInterval = setInterval(() => {
             countdown -= 0.1;
             rightText.textContent = countdown.toFixed(1) + 's';
