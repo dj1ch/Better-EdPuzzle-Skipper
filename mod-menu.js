@@ -3,6 +3,11 @@ javascript: void (function () {
     /* Method 1: Copy the code, Go to Inspect Element, Click Console, Paste the code into there, Press Enter */
     /* Method 2: Highlight all the code, drag it to the bookmarks bar, then click the bookmark on an EdPuzzle */
     /* February 12th, 2024 Update: Added New Buttons and Features */
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = 'https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500&display=swap';
+    document.head.appendChild(link);
     function createToast(message) {
         const toast = document.createElement('div');
         toast.classList.add('toast');
@@ -19,11 +24,13 @@ javascript: void (function () {
         document.body.appendChild(toast);
         const leftText = document.createElement('span');
         leftText.textContent = 'Injecting EdPuzzle Mod Menu';
+        leftText.style.fontFamily = "'Quicksand', sans-serif";
         leftText.style.marginRight = '10px';
         toast.appendChild(leftText);
         const rightText = document.createElement('span');
         rightText.textContent = '3.0s';
         rightText.style.float = 'right';
+        rightText.style.fontFamily = "'Quicksand', sans-serif";
         toast.appendChild(rightText);
         /* We added a countdown because there are some instances of the UI being too big/small when executed too early */
         let countdown = 1.5;
@@ -57,13 +64,6 @@ javascript: void (function () {
                     titleBar.style.borderTopRightRadius = "10px";
 
                     blackContainer.appendChild(titleBar);
-                    /* other code */
-                    var link = document.createElement('link');
-                    link.rel = 'stylesheet';
-                    link.type = 'text/css';
-                    link.href = 'https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500&display=swap';
-                    document.head.appendChild(link);
-
                     titleBar.style.fontFamily = "'Quicksand', sans-serif";
                     /* skip button */
                     var skipButton = document.createElement("button");
@@ -236,6 +236,7 @@ javascript: void (function () {
                     var footerText = document.createElement("div");
                     footerText.textContent = "Made by smorenitez - Discord, TikTok, & GitHub: smorenitez";
                     footerText.style.position = "absolute";
+                    footerText.style.fontFamily = "'Quicksand', sans-serif";
                     footerText.style.bottom = "10px";
                     footerText.style.left = "50%";
                     footerText.style.transform = "translateX(-50%)";
@@ -248,16 +249,18 @@ javascript: void (function () {
                     footerText2.style.position = "absolute";
                     footerText2.style.bottom = "8%";
                     footerText2.style.left = "48%";
+                    footerText2.style.fontFamily = "'Quicksand', sans-serif";
                     footerText2.style.transform = "translateX(-50%)";
                     footerText2.style.color = "#888";
                     footerText2.style.fontSize = "10px";
 
                     blackContainer.appendChild(footerText2);
                     var footerText3 = document.createElement("div");
-                    footerText3.textContent = "Welcome! Select an option to activate";
+                    footerText3.textContent = "Welcome! Click to activate mods";
                     footerText3.style.position = "absolute";
                     footerText3.style.bottom = "62%";
-                    footerText3.style.left = "50%";
+                    footerText3.style.left = "49%";
+                    footerText3.style.fontFamily = "'Quicksand', sans-serif";
                     footerText3.style.transform = "translateX(-50%)";
                     footerText3.style.color = "rgb(255 255 255)";
                     footerText3.style.fontSize = "16px";
