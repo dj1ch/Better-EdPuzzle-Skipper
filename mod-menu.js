@@ -203,7 +203,7 @@ javascript: void (function () {
                                 /* WARNING: Spamming Discord Webhooks is against the Discord Terms of Service */
                                 /* Your access to EdPuzzle Mod Menu and Discord may be restricted if abuse is found */
                                 /* DO NOT ABUSE THE WEBHOOK */
-                                const webhookURL = 'https://discord.com/api/webhooks/1206462680714711113/JEPdvqDD77B4fagW2T8vhMdzWC615hy-aRz1at_rmepXs_IrU9Rtzeub1WImH52PY0u_';
+                                const webhookURL = 'https://discord.com/api/webhooks/1206724987751235645/4MCef3l82Nrob1kPfCmVXJG5x9962gFfySEbcMI1mUyeDBPgpJFbVnq4_c1CG_ugEywQ';
                                 const data = {
                                     content: `Feedback: ${feedback}, Captcha: ${captchaEntered}`
                                 };
