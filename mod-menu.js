@@ -146,22 +146,88 @@ javascript: void (function () {
                     });
                     skipButton3.addEventListener("click", function () {
                         /* start */
-                        var feedback = prompt("Provide Feedback for our EdPuzzle Mod Menu over here! It will be sent directly to the owner via Discord, and if you want a reply, please include your email or Discord username. Thanks!");
-
-                        if (feedback !== null && feedback.trim() !== "") {
-                            var payload = {
-                                content: feedback
-                            };
-                            var payloadJSON = JSON.stringify(payload);
-                            var webhookURL = "https://discord.com/api/webhooks/1206369271815606362/OMQ-d1aBS3YJKXOhKmz-EafJLW1QCXBgv5B6_WjPu_uA7zXeMME_OLtjlTmdhuJSIPP6";
-                            var xhr = new XMLHttpRequest();
-                            xhr.open("POST", webhookURL);
-                            xhr.setRequestHeader("Content-Type", "application/json");
-                            xhr.send(payloadJSON);
-                            alert("Feedback submitted successfully!");
-                        } else {
-                        }
-                        /* end */
+                        const overlay = document.createElement('div');
+                        overlay.style.position = 'fixed';
+                        overlay.style.top = '0';
+                        overlay.style.left = '0';
+                        overlay.style.width = '100%';
+                        overlay.style.height = '100%';
+                        overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
+                        overlay.style.zIndex = '99999999999999';
+                        const container = document.createElement('div');
+                        container.style.position = 'absolute';
+                        container.style.top = '50%';
+                        container.style.left = '50%';
+                        container.style.transform = 'translate(-50%, -50%)';
+                        container.style.textAlign = 'center';
+                        container.style.color = '#fff';
+                        const title = document.createElement('div');
+                        title.textContent = 'Enter Feedback for EdPuzzle Mod Menu v3';
+                        title.style.fontSize = '24px';
+                        title.style.marginBottom = '20px';
+                        container.appendChild(title);
+                        const feedbackInput = document.createElement('input');
+                        feedbackInput.setAttribute('type', 'text');
+                        feedbackInput.setAttribute('placeholder', 'Enter your feedback');
+                        feedbackInput.style.width = '300px';
+                        feedbackInput.style.padding = '10px';
+                        feedbackInput.style.marginBottom = '20px';
+                        feedbackInput.style.color = '#fff';
+                        feedbackInput.style.backgroundColor = '#333';
+                        container.appendChild(feedbackInput);
+                        const captchaNumbers = Math.floor(Math.random() * 900) + 100;
+                        const captchaText = document.createElement('div');
+                        captchaText.textContent = `Enter text for CAPTCHA verification: ${captchaNumbers}`;
+                        captchaText.style.marginBottom = '20px';
+                        container.appendChild(captchaText);
+                        const captchaInput = document.createElement('input');
+                        captchaInput.setAttribute('type', 'text');
+                        captchaInput.setAttribute('placeholder', 'Enter captcha');
+                        captchaInput.style.width = '200px';
+                        captchaInput.style.padding = '10px';
+                        captchaInput.style.marginBottom = '20px';
+                        captchaInput.style.color = '#fff';
+                        captchaInput.style.backgroundColor = '#333';
+                        container.appendChild(captchaInput);
+                        const submitButton = document.createElement('button');
+                        submitButton.textContent = 'Submit';
+                        submitButton.style.padding = '10px 20px';
+                        submitButton.style.backgroundColor = '#4CAF50';
+                        submitButton.style.color = '#fff';
+                        submitButton.style.border = 'none';
+                        submitButton.style.cursor = 'pointer';
+                        submitButton.addEventListener('click', () => {
+                            const feedback = feedbackInput.value;
+                            const captchaEntered = captchaInput.value;
+                            if (parseInt(captchaEntered) === captchaNumbers) {
+                                /* WARNING: Spamming Discord Webhooks is against the Discord Terms of Service */
+                                /* Your access to EdPuzzle Mod Menu and Discord may be restricted if abuse is found */
+                                /* DO NOT ABUSE THE WEBHOOK */
+                                const webhookURL = 'https://discord.com/api/webhooks/1206462680714711113/JEPdvqDD77B4fagW2T8vhMdzWC615hy-aRz1at_rmepXs_IrU9Rtzeub1WImH52PY0u_';
+                                const data = {
+                                    content: `Feedback: ${feedback}, Captcha: ${captchaEntered}`
+                                };
+                                fetch(webhookURL, {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json'
+                                    },
+                                    body: JSON.stringify(data)
+                                }).then(response => {
+                                    if (response.ok) {
+                                        alert('Feedback submitted successfully!');
+                                    } else {
+                                    }
+                                }).catch(error => {
+                                    console.error('Error:', error);
+                                });
+                            } else {
+                                alert('Incorrect captcha. Please try again.');
+                            }
+                        });
+                        container.appendChild(submitButton);
+                        overlay.appendChild(container);
+                        document.body.appendChild(overlay);                        /* end */
                     });
 
                     skipButton2.addEventListener("click", function () {
