@@ -312,7 +312,7 @@ javascript: void (function () {
                     requestAnimationFrame(animate);
                 }, 500);
                 setTimeout(() => {
-                    leftText.style.fontSize = '0';
+                    leftText.style.fontSize = '1';
                     setTimeout(() => {
                         leftText.textContent = 'EdPuzzle Mod Menu Successfully Injected';
                         leftText.style.fontSize = '';
