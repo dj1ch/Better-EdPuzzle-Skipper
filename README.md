@@ -10,6 +10,7 @@ We continuously update our mod menu off of user feedback. Here is what this upda
 5) Removed Dead Code
 6) Security Patches
 7) Removed Feedback Forum due to abuse. To submit feedback, please use GitHub Issues <br>
+
 That is all, enjoy! :)
 # Features
 1) Unlock Video Progress Bar
