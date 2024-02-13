@@ -1,18 +1,3 @@
-# Better EdPuzzle Skipper
-Simple EdPuzzle Mod Menu that is designed to let you skip videos, answer questions, and more, all in one menu.
+# Bud, I literally code free projects. I know the ins and outs of API requests. I know how to make a newer, more modern, and more better version of what BS this project is. But I am choosing not to because I am not going to waste my energy because of some developer who cant even spend his energy, 4 hours of his life at most, to code an update. No way that is happening. I already have a barebones patch to the new update, but it's private for a reason. I'm protesting against lazy development like this,
 
-# February 13th, 2024 Update
-We continuously update our mod menu off of user feedback. Here is what this update contains:
-1) Introduction to Answer Answer Bot
-2) Removed Buttons
-3) Added Buttons
-4) Improved UI
-5) Removed Dead Code
-6) Security Patches
-7) Removed Feedback Forum due to abuse. To submit feedback, please use GitHub Issues <br>
-
-That is all, enjoy! :)
-# Features
-1) Unlock Video Progress Bar
-2) AI Chat with GPT-4
-3) Auto Answer Bot
+# Also @wearrrrr I don't care. I have a right to be mad about lazy development teams like this. Imagine if ur favorite game company decided to never update it again and it kept saying "If you want updates so bad make them yourself and make a pull request" Cuz thats how ur looking like right now.
