@@ -1,6 +1,5 @@
 # Better EdPuzzle Skipper
-This is an EdPuzzle Mod Menu that is designed to skip, and lets you use AI to assist you in skipping EdPuzzles. <br>
-To use, simply view mod-menu.js and follow the instructions provided.
+Simple EdPuzzle Mod Menu that is designed to let you skip videos, answer questions, and more, all in one menu.
 
 # February 13th, 2024 Update
 We continuously update our mod menu off of user feedback. Here is what this update contains:
