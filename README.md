@@ -1,5 +1,5 @@
 # Better EdPuzzle Skipper
-Easily skip and use AI on any EdPuzzle. Simply go to mod-menu.js, and follow the instructions on the file. <br>
+Better EdPuzzle Skipper is an EdPuzzle Mod Menu that is designed to skip, and lets you use AI to assist you in skipping EdPuzzles
 **Updated February 12th, 2024.**
 
 # Features
