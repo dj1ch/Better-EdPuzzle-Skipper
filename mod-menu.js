@@ -3,6 +3,7 @@ javascript: void (function () {
     /* Method 1: Copy the code, Go to Inspect Element, Click Console, Paste the code into there, Press Enter */
     /* Method 2: Highlight all the code, drag it to the bookmarks bar, then click the bookmark on an EdPuzzle */
     /* February 13th, 2024 Update: Skip Questions with GPT-4 Assistance, Removed Buttons, Added Buttons, Bug Fixes */
+    /* KNOWN ISSUES: The AI may be incredibly lazy and give wrong answers on multiple choice questions. Fixing soon. */
     var link = document.createElement('link');
     link.rel = 'stylesheet';
     link.type = 'text/css';
