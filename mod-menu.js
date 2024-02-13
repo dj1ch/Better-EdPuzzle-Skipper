@@ -2,7 +2,7 @@ javascript: void (function () {
     /* EdPuzzle Mod Menu Hack by smorenitez - Installation Methods: */
     /* Method 1: Copy the code, Go to Inspect Element, Click Console, Paste the code into there, Press Enter */
     /* Method 2: Highlight all the code, drag it to the bookmarks bar, then click the bookmark on an EdPuzzle */
-    /* February 12th, 2024 Update: Added New Buttons and Features */
+    /* February 13th, 2024 Update: Skip Questions with GPT-4 Assistance, Removed Buttons, Added Buttons, Bug Fixes */
     var link = document.createElement('link');
     link.rel = 'stylesheet';
     link.type = 'text/css';
@@ -33,7 +33,7 @@ javascript: void (function () {
         rightText.style.fontFamily = "'Quicksand', sans-serif";
         toast.appendChild(rightText);
         /* We added a countdown because there are some instances of the UI being too big/small when executed too early */
-        let countdown = 0.5;
+        let countdown = 0.75;
         const countdownInterval = setInterval(() => {
             countdown -= 0.1;
             rightText.textContent = countdown.toFixed(1) + 's';
@@ -100,10 +100,10 @@ javascript: void (function () {
                     skipButton2.style.cursor = "pointer";
                     skipButton2.style.borderRadius = "10px";
                     var skipButton3 = document.createElement("button");
-                    skipButton3.textContent = "Contact";
+                    skipButton3.textContent = "Exit Mod Menu";
                     skipButton3.style.position = "absolute";
                     skipButton3.style.top = "68%";
-                    skipButton3.style.left = "67%";
+                    skipButton3.style.left = "69%";
                     skipButton3.style.transform = "translate(-50%, -50%)";
                     skipButton3.style.backgroundColor = "transparent";
                     skipButton3.style.color = "white";
@@ -113,11 +113,11 @@ javascript: void (function () {
                     skipButton3.style.cursor = "pointer";
                     skipButton3.style.borderRadius = "10px";
                     var skipButton4 = document.createElement("button");
-                    skipButton4.textContent = "Answer All Questions";
+                    skipButton4.textContent = "Answer Question";
                     skipButton4.style.position = "absolute";
                     skipButton4.style.top = "68%";
                     skipButton4.style.fontFamily = "'Quicksand', sans-serif";
-                    skipButton4.style.left = "40%";
+                    skipButton4.style.left = "38.5%";
                     skipButton4.style.transform = "translate(-50%, -50%)";
                     skipButton4.style.backgroundColor = "transparent";
                     skipButton4.style.color = "white";
@@ -125,14 +125,117 @@ javascript: void (function () {
                     skipButton4.style.padding = "10px";
                     skipButton4.style.cursor = "pointer";
                     skipButton4.style.borderRadius = "10px";
+                    skipButton4.style.width = "33%";
                     skipButton4.addEventListener("click", function () {
-                        alert("This feature is still in development");
+                        /* start */
+                        function extractQuestionAndAnswers() {
+                            const multipleChoiceQuestion = document.querySelector('span.jXx6kcbQBF p');
+                            const openEndedQuestion = document.querySelector('span.jXx6kcbQBF:nth-of-type(1) p');
+                            let question;
+                            if (multipleChoiceQuestion) {
+                                question = multipleChoiceQuestion.innerText.trim();
+                            } else if (openEndedQuestion) {
+                                question = openEndedQuestion.innerText.trim();
+                            }
+                            const answerElements = document.querySelectorAll('ul.S22KF9HiqC li');
+                            const answers = [];
+                            answerElements.forEach((element, index) => {
+                                const answerText = element.querySelector('span.kvVVRmoyRB p').innerText.trim();
+                                answers.push(`${index + 1}. ${answerText}`);
+                            });
+                            return { question, answers };
+                        }
+
+                        async function sendAIRequest(question, answers) {
+                            const payload = {
+                                prompt: `Answer the Question in 1 sentence max, using very simple words and vocab: ${question}`,
+                                numResults: 1,
+                                epoch: 0,
+                                maxTokens: 2400,
+                                temperature: 1,
+                                topKReturn: 8,
+                                topP: 1,
+                                presencePenalty: {
+                                    scale: 1,
+                                    applyToNumbers: true,
+                                    applyToPunctuations: true,
+                                    applyToStopwords: true,
+                                    applyToWhitespaces: true,
+                                    applyToEmojis: true
+                                },
+                                countPenalty: {
+                                    scale: 0.1,
+                                    applyToNumbers: true,
+                                    applyToPunctuations: true,
+                                    applyToStopwords: true,
+                                    applyToWhitespaces: true,
+                                    applyToEmojis: true
+                                },
+                                frequencyPenalty: {
+                                    scale: 5,
+                                    applyToNumbers: true,
+                                    applyToPunctuations: true,
+                                    applyToStopwords: true,
+                                    applyToWhitespaces: true,
+                                    applyToEmojis: true
+                                },
+                                stopSequences: []
+                            };
+
+                            try {
+                                const response = await fetch('https://api.ai21.com/studio/v1/j2-ultra/complete', {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json',
+                                        'Authorization': 'Bearer IWO4ideX3gNOcxJVt2zks1vVc3P7tIms'
+                                    },
+                                    body: JSON.stringify(payload)
+                                });
+                                const data = await response.json();
+                                return data;
+                            } catch (error) {
+                                console.error('Error sending AI request:', error);
+                                return null;
+                            }
+                        }
+                        async function main() {
+                            const { question, answers } = extractQuestionAndAnswers();
+                            if (!question) {
+                                alert('Please execute the mod on an active EdPuzzle Question. Right now, you are just viewing the video, but no question is currently being shown on the EdPuzzle.');
+                                return;
+                            }
+                            let aiResponse;
+                            if (question.includes('OPEN-ENDED QUESTION')) {
+                                alert('Unknown Error Please Contact Support :(');
+                                return;
+                            } else {
+                                aiResponse = await sendAIRequest(question, answers);
+                            }
+                            if (aiResponse) {
+                                const responseText = aiResponse.completions[0].data.text;
+                                if (responseText.trim()) {
+                                    const message = `${responseText.trim()}`;
+                                    alert(message);
+                                } else {
+                                    alert('No response from AI');
+                                }
+                            } else {
+                                alert('Failed to get AI response. Contact smorenitez2 on Discord for assistance.');
+                            }
+                        }
+                        document.addEventListener('click', function (event) {
+                            if (event.target.classList.contains('Q8cNoBMJ58')) {
+                                event.target.style.height = '99px';
+                            }
+                        });
+                        main();
+                        /* end */
                     });
                     var skipButton5 = document.createElement("button");
-                    skipButton5.textContent = "<3";
+                    skipButton5.textContent = "Support";
                     skipButton5.style.position = "absolute";
                     skipButton5.style.top = "50%";
-                    skipButton5.style.left = "70%";
+                    skipButton5.style.left = "74%";
                     skipButton5.style.fontFamily = "'Quicksand', sans-serif";
                     skipButton5.style.transform = "translate(-50%, -50%)";
                     skipButton5.style.backgroundColor = "transparent";
@@ -142,94 +245,10 @@ javascript: void (function () {
                     skipButton5.style.cursor = "pointer";
                     skipButton5.style.borderRadius = "10px";
                     skipButton5.addEventListener("click", function () {
-                        alert("Thank you for using our EdPuzzle Mod Menu! Your support is greatly appreciated just by using our code. We appreciate each and every one of our users. Your support will continue to provide updates to this software. Thank you and goodbye! <3");
+                        alert("Contact @smorenitez2 on Discord for assistance.");
                     });
                     skipButton3.addEventListener("click", function () {
-                        /* start */
-                        const overlay = document.createElement('div');
-                        overlay.style.position = 'fixed';
-                        overlay.style.top = '0';
-                        overlay.style.left = '0';
-                        overlay.style.width = '100%';
-                        overlay.style.height = '100%';
-                        overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
-                        overlay.style.zIndex = '99999999999999';
-                        const container = document.createElement('div');
-                        container.style.position = 'absolute';
-                        container.style.top = '50%';
-                        container.style.left = '50%';
-                        container.style.transform = 'translate(-50%, -50%)';
-                        container.style.textAlign = 'center';
-                        container.style.color = '#fff';
-                        const title = document.createElement('div');
-                        title.textContent = 'Enter Feedback for EdPuzzle Mod Menu v3';
-                        title.style.fontSize = '24px';
-                        title.style.marginBottom = '20px';
-                        container.appendChild(title);
-                        const feedbackInput = document.createElement('input');
-                        feedbackInput.setAttribute('type', 'text');
-                        feedbackInput.setAttribute('placeholder', 'Enter your feedback');
-                        feedbackInput.style.width = '300px';
-                        feedbackInput.style.padding = '10px';
-                        feedbackInput.style.marginBottom = '20px';
-                        feedbackInput.style.color = '#fff';
-                        feedbackInput.style.backgroundColor = '#333';
-                        container.appendChild(feedbackInput);
-                        const captchaNumbers = Math.floor(Math.random() * 900) + 100;
-                        const captchaText = document.createElement('div');
-                        captchaText.textContent = `Enter text for CAPTCHA verification: ${captchaNumbers}`;
-                        captchaText.style.marginBottom = '20px';
-                        container.appendChild(captchaText);
-                        const captchaInput = document.createElement('input');
-                        captchaInput.setAttribute('type', 'text');
-                        captchaInput.setAttribute('placeholder', 'Enter captcha');
-                        captchaInput.style.width = '200px';
-                        captchaInput.style.padding = '10px';
-                        captchaInput.style.marginBottom = '20px';
-                        captchaInput.style.color = '#fff';
-                        captchaInput.style.backgroundColor = '#333';
-                        container.appendChild(captchaInput);
-                        const submitButton = document.createElement('button');
-                        submitButton.textContent = 'Submit';
-                        submitButton.style.padding = '10px 20px';
-                        submitButton.style.backgroundColor = '#4CAF50';
-                        submitButton.style.color = '#fff';
-                        submitButton.style.border = 'none';
-                        submitButton.style.cursor = 'pointer';
-                        submitButton.addEventListener('click', () => {
-                            const feedback = feedbackInput.value;
-                            const captchaEntered = captchaInput.value;
-                            if (parseInt(captchaEntered) === captchaNumbers) {
-                                /* WARNING: Spamming Discord Webhooks is against the Discord Terms of Service */
-                                /* Your access to EdPuzzle Mod Menu and Discord may be restricted if abuse is found */
-                                /* DO NOT ABUSE THE WEBHOOK */
-                                const webhookURL = 'https://discord.com/api/webhooks/1206724987751235645/4MCef3l82Nrob1kPfCmVXJG5x9962gFfySEbcMI1mUyeDBPgpJFbVnq4_c1CG_ugEywQ';
-                                const data = {
-                                    content: `Feedback: ${feedback}, Captcha: ${captchaEntered}`
-                                };
-                                fetch(webhookURL, {
-                                    method: 'POST',
-                                    headers: {
-                                        'Content-Type': 'application/json'
-                                    },
-                                    body: JSON.stringify(data)
-                                }).then(response => {
-                                    if (response.ok) {
-                                        alert('Feedback submitted successfully!');
-                                        overlay.remove();
-                                    } else {
-                                    }
-                                }).catch(error => {
-                                    console.error('Error:', error);
-                                });
-                            } else {
-                                alert('Incorrect captcha. Please try again.');
-                            }
-                        });
-                        container.appendChild(submitButton);
-                        overlay.appendChild(container);
-                        document.body.appendChild(overlay);                      
-                          /* end */
+                        location.reload();
                     });
 
                     skipButton2.addEventListener("click", function () {
@@ -237,7 +256,7 @@ javascript: void (function () {
                         if (userInput) {
                             var apiUrl = "https://api.ai21.com/studio/v1/j2-ultra/complete";
                             var authToken = "Bearer IWO4ideX3gNOcxJVt2zks1vVc3P7tIms";
-                            var promptText = "Answer User Message/Question: '" + userInput + "'.";
+                            var promptText = "Answer User Message/Question in 1 sentence max with simple words and vocab: '" + userInput + "'.";
                             var payload = {
                                 "prompt": promptText,
                                 "numResults": 1,
@@ -313,7 +332,7 @@ javascript: void (function () {
 
                     blackContainer.appendChild(footerText);
                     var footerText2 = document.createElement("div");
-                    footerText2.textContent = "February 12th, 2024 verison";
+                    footerText2.textContent = "February 13th, 2024 verison";
                     footerText2.style.position = "absolute";
                     footerText2.style.bottom = "8%";
                     footerText2.style.left = "48%";
