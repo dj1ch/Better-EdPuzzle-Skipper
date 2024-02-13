@@ -2,7 +2,7 @@ javascript: void (function () {
     /* EdPuzzle Mod Menu Hack February 13th Update by smorenitez - Installation Methods: */
     /* Method 1: Copy the code, Go to Inspect Element, Click Console, Paste the code into there, Press Enter */
     /* Method 2: Highlight all the code, drag it to the bookmarks bar, then click the bookmark on an EdPuzzle */
-    /* KNOWN ISSUES: The AI may be incredibly lazy and give wrong answers on multiple choice questions. Fixing soon. */
+    /* KNOWN ISSUES: The AI may be incredibly lazy and give wrong answers on multiple choice questions */
     var link = document.createElement('link');
     link.rel = 'stylesheet';
     link.type = 'text/css';
